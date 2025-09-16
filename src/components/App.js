@@ -1,13 +1,19 @@
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import BooksList from "./BooksList";
+import { fetchBooks } from "../redux/actions";
 
-import React from "react";
-import './../styles/App.css';
+export default function App() {
+  const dispatch = useDispatch();
 
-const App = () => {
+  useEffect(() => {
+    dispatch(fetchBooks());
+  }, [dispatch]);
+
   return (
-    <div>
-        {/* Do not remove the main div */}
+    <div className="App">
+      <h1>Book Sorting App</h1>
+      <BooksList />
     </div>
-  )
+  );
 }
-
-export default App
